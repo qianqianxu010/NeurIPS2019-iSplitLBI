@@ -32,7 +32,7 @@ for iter = 1:MAX_ITER
     FX = f(beta,s);
     [g,H] = Hessian_tie(beta,s,y,X,d1,d2,nu);
     eps = 1e-5;    
-    dws = -(H + eps * eye(size(H))) \ g;   % Newton step
+    dws = -(H + eps * speye(size(H))) \ g;   % Newton step
     dfws = g' * dws; % Newton decrement
     if abs(dfws) < TOLERANCE
         break;
